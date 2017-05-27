@@ -4,8 +4,14 @@
   "description": "react-scaffold",
   "main": "index.js",
   "scripts": {
-    "dev_server": "set NODE_ENV=development&&node ./bin/www",
-    "pro_server": "set NODE_ENV=production&&babel ./server -d ./build/nodeServer/server&&babel ./src -d ./build/nodeServer/src &&node ./bin/www",
+    
+    "dev_server":"npm run dev&&npm run server_dev",
+    "pro_server":"npm run mkdir_pro_dir && npm run server_pro && npm run pro",
+
+
+    "mkdir_pro_dir":"node ./bin/copy",
+    "server_dev": "set NODE_ENV=development&&node ./bin/www",
+    "server_pro": "set NODE_ENV=production&&babel ./server -d ./build/nodeServer/server&&babel ./src -d ./build/nodeServer/src &&node ./bin/www",
     "dev": "webpack -p --progress --profile --config  webpack-dev-config.js",
     "pro": "set NODE_ENV=production&&webpack -p --progress --profile --config webpack-pro-config.js"
   },

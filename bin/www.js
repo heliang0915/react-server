@@ -3,15 +3,20 @@
  */
 
 let env=process.env.NODE_ENV||"development";
+
+// let copy=require("./copy");
+
+
+
 if(env=="development"){
     console.log("babel-register 导入...")
     require('babel-register');
+    // copy();
 }
 console.log("env=========="+env)
 let server_src="../server";
 if(env!="development"){
     server_src="../build/nodeServer/server";
-    // config_src="../build/nodeServer/";
 }
 
 
@@ -28,8 +33,14 @@ require('css-modules-require-hook')({
 require('asset-require-hook')({
     extensions: ['jpg', 'png', 'gif'],
     name: '[name].[ext]',
+    publicPath:'/assets/images/', //资源目录
     limit: 8000
 })
+
+
+
+
+
 
 let app =require(server_src+"/app").default;
 let {conf:config} =require(server_src+"/config");

@@ -28,7 +28,6 @@ module.exports={
         publicPath: '/',
         filename:'[name].js?[hash]'
     },
-    devtool:"cheap-module-source-map",
     resolve:{
        extensions:['','.js','.css','.jsx']
     },
@@ -47,7 +46,7 @@ module.exports={
              loader:'json'
             },{
                 test: /\.(png|jpe?g|gif)(\?.*)?$/,
-                loader: 'url-loader?limit=1&name=assets/images/[name][hash].[ext]'
+                loader: 'url-loader?limit=1&name=assets/images/[name].[ext]'
             },{
               test:/\.(woff|woff2|ttf|svg|eot)(\?v=\d+\.\d+\.\d+)?$/,
               loader:'url?limit=1000&name=assets/font/[name].[ext]'

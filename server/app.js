@@ -3,7 +3,7 @@ import  path from 'path';
 import debug from 'morgan';
 import  cookieParser from 'cookie-parser';
 import  bodyParser from 'body-parser';
-import {env} from './config';
+import {env,cacheTime} from './config';
 import index from './router/index';
 
 
@@ -12,6 +12,11 @@ App.use(debug('dev'));
 App.use(cookieParser());
 App.use(bodyParser.json());
 App.use(bodyParser.urlencoded({extended:false}));
+App.use((req,res,next)=>{
+    res.setHeader("Cache-control","max-age:"+cacheTime);
+    next();
+})
+
 App.use("/",index);
 
 // App.use(express.static(path.join(__dirname,"/../assets/")));

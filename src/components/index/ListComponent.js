@@ -4,7 +4,7 @@
  */
 import React,{Component} from 'react';
 import {fetchIndex} from '../../redux/actions/index/indexaction' ;
-import '../../../assets/css/index.css';
+import '../../assets/css/index.css';
 
 
 class ListComponent extends Component{
@@ -18,7 +18,7 @@ class ListComponent extends Component{
             <div>
                 <h2>List</h2>
                 <p></p>
-                <img src={require("../../../assets/images/7.png")} alt="7.png"/>
+                <img src={require("../../assets/images/7.png")} alt="7.png"/>
                 {this.show()}
             </div>
         )
