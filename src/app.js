@@ -5,13 +5,15 @@
  */
 import React,{Component} from 'react';
 import {render} from 'react-dom';
-import {Provider,connect} from 'react-redux';
-import RootRouter from './router';
-import store from './redux/store/store';
+import {Provider} from 'react-redux';
+import RootRouter from './routers/router';
+import getStoreConfig from './redux/store/store';
 
 
 class App extends Component{
     render(){
+        let initialState=window.__INITIAL_STATE;
+        let store=getStoreConfig(initialState);
         return(
             <Provider store={store}>
                 <RootRouter />

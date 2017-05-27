@@ -17,7 +17,7 @@ h2::before{
     display:inline-block;
     width:30px;
     height:30px;
-    background:url("../../assets/images/7.png") no-repeat;
+    background:url("../images/7.png") no-repeat;
 }
 
 p {

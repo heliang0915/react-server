@@ -3,7 +3,9 @@
  * @date: 2017/1/13
  */
 let path=require("path");
+require('babel-register');
 let webpack=require('webpack');
+let {env}=require("./server/config");
 let HtmlWebpackPlugin=require("html-webpack-plugin");
 
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
@@ -13,16 +15,20 @@ let reactPath=path.join(__dirname,"./node_modules/react/dist/react.js");
 let reactDomPath=path.join(__dirname,'./node_modules/react-dom/dist/react-dom.js');
 console.log("生产环境...");
 
+console.log("文件生成目录："+path.resolve(__dirname,'build/'+env));
+
+
 module.exports={
     entry:{
         app:path.resolve(__dirname,'src/app.js'),
         libs:['react','react-dom','react-router','react-redux','isomorphic-fetch']
     },
     output:{
-        path:path.resolve(__dirname,'build'),
+        path:path.resolve(__dirname,'build/'+env),
         publicPath: '/',
         filename:'[name].js?[hash]'
     },
+    devtool:"cheap-module-source-map",
     resolve:{
        extensions:['','.js','.css','.jsx']
     },
@@ -56,10 +62,10 @@ module.exports={
         noParse:[reactPath,reactDomPath]
     },
     plugins:[
-        new HtmlWebpackPlugin({
-            template:path.resolve(__dirname,'src/template/index.ejs'),
-            title:'生产环境'
-        }),
+        // new HtmlWebpackPlugin({
+        //     template:path.resolve(__dirname,'src/template/index.ejs'),
+        //     title:'生产环境'
+        // }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production')

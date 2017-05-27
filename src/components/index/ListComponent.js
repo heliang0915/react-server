@@ -4,7 +4,8 @@
  */
 import React,{Component} from 'react';
 import {fetchIndex} from '../../redux/actions/index/indexaction' ;
-import '../../assets/css/index.css';
+import '../../../assets/css/index.css';
+
 
 class ListComponent extends Component{
     componentWillMount(){
@@ -17,7 +18,7 @@ class ListComponent extends Component{
             <div>
                 <h2>List</h2>
                 <p></p>
-                <img src={require("../../assets/images/7.png")} alt="7.png"/>
+                <img src={require("../../../assets/images/7.png")} alt="7.png"/>
                 {this.show()}
             </div>
         )
@@ -33,8 +34,8 @@ class ListComponent extends Component{
     renderList(data){
         let ary=[];
         if(data&&data.length>0){
-            data.forEach((item)=>{
-                ary.push(<p>{item.author}</p>);
+            data.forEach((item,index)=>{
+                ary.push(<p key={index}>{item.author}</p>);
             })
         }
         return ary;

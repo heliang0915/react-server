@@ -3,14 +3,31 @@ import  path from 'path';
 import debug from 'morgan';
 import  cookieParser from 'cookie-parser';
 import  bodyParser from 'body-parser';
-let app=express();
-app.use(debug('dev'));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(express.static(path.join(__dirname,"/")));
+import {env} from './config';
+import index from './router/index';
 
-export default app;
+
+let App=express();
+App.use(debug('dev'));
+App.use(cookieParser());
+App.use(bodyParser.json());
+App.use(bodyParser.urlencoded({extended:false}));
+App.use("/",index);
+
+// App.use(express.static(path.join(__dirname,"/../assets/")));
+// App.use(express.static(path.join(__dirname,"/../assets"))
+
+if(env!="development"){
+    App.use(express.static(path.join(__dirname,"/../../"+env)));
+    console.log("生产状态：静态目录地址==="+path.join(__dirname,"/../../"+env));
+}else{
+    App.use(express.static(path.join(__dirname,"/../build/"+env)));
+    console.log("开发状态：静态目录地址==="+path.join(__dirname,"/../build/"+env));
+}
+
+// App.use(express.static(path.join(__dirname,"/nodeServer")));
+
+export default App;
 
 
 

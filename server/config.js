@@ -2,13 +2,12 @@ let env=process.env.NODE_ENV||"development";
 let config={
     development:{
         port:"",
-        api:"",
-        
-        
+        api:""
     },
     production:{
         
     }
 };
 
-export default config[env];
+let conf= config[env];
+export {conf,env};

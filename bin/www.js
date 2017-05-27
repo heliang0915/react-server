@@ -7,25 +7,40 @@ if(env=="development"){
     console.log("babel-register 导入...")
     require('babel-register');
 }
-
 console.log("env=========="+env)
-let server_src="../server/";
+let server_src="../server";
 if(env!="development"){
-    server_src="../build/server/"
+    server_src="../build/nodeServer/server";
+    // config_src="../build/nodeServer/";
 }
 
-// import app from server_src+"/app";
-let app =require(server_src+"/app");
-let config =require(server_src+"/config");
-import  http from 'http';
+
+//忽略css
+require('css-modules-require-hook')({
+    extensions: ['.css'],
+    preprocessCss: function (css, filepath) {
+        return css;
+    },
+    camelCase: true,
+    generateScopedName: '[name]__[local]__[hash:base64:8]'
+});
+//将require的图片转换为真实地址
+require('asset-require-hook')({
+    extensions: ['jpg', 'png', 'gif'],
+    name: '[name].[ext]',
+    limit: 8000
+})
+
+let app =require(server_src+"/app").default;
+let {conf:config} =require(server_src+"/config");
+let http=require('http');
 
 
-
-// import config from server_src+'/config';
 let port=config.port||3000;
 app.set("port",port);
-
 let server=http.createServer(app);
+
+server.listen(port)
 let onListening=()=>{
     console.log("react渲染服务器启动...端口:%s",port);
 }

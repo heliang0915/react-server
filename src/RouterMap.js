@@ -1,11 +1,11 @@
 let RouterMap=[{
     path:"/",
-    name:"Index",
+    name:"",
     componentName:"Index"
 },{
-    path:"/list",
-    name:"list",
-    componentName:"List"
+    path:"/index",
+    name:"index",
+    componentName:"IndexView"
 }]
 
 export default RouterMap;

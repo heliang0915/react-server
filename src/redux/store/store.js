@@ -8,5 +8,8 @@ import {createStore,applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import RootReducer from '../reducers/rootreducer';
 
-let store=applyMiddleware(thunk)(createStore)(RootReducer);
-export  default store;
+let getStoreConfig=(initialState)=>{
+    let store=applyMiddleware(thunk)(createStore)(RootReducer);
+    return store;
+}
+export  default getStoreConfig;

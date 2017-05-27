@@ -3,16 +3,15 @@
  * @author: heliang
  * @date: 2017/1/25
  */
-
 import React,{Component} from 'react';
-import {Route,Router,browserHistory} from 'react-router';
-import IndexView from './views/IndexView';
+import {Router,browserHistory} from 'react-router';
+import routes from './routes';
 
 class RootRouter extends  Component{
     render(){
         return (
             <Router history={browserHistory}>
-                <Route path="/" component={IndexView}/>
+                {routes}
             </Router>
         )
     }
