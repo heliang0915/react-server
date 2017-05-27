@@ -53,7 +53,7 @@ var exists = function( src, dst, callback ){
         // 不存在
         else{
            mkdirs( dst, function(err){
-                 console.log(err);
+                 console.log(err!=undefined?err:"");
                 callback( src, dst );
             });
         }
@@ -88,7 +88,53 @@ function mkdirsSync(dirname) {
     }
 }
 
-//将不能被babel编译的文件放入build目录下 
-exists(RootPath.join(__dirname,"/../src/assets/"),RootPath.join(__dirname,"/../build/nodeServer/src/assets"),copy);
-exists(RootPath.join(__dirname,"/../server/template/"),RootPath.join(__dirname,"/../build/nodeServer/server/template"),copy);
+
+//同步删除指定目录下的所前目录和文件,包括当前目录
+function rmdirsSync(targetPath) {
+    try{
+        let files = [];
+        if( fs.existsSync(targetPath) ) {
+            files = fs.readdirSync(targetPath);
+            files.forEach(function(file,index){
+                let curPath = targetPath + "/" + file;
+                if(fs.statSync(curPath).isDirectory()) { // recurse
+                    if(!rmdirsSync(curPath)) return false;
+                } else { // delete file
+                    fs.unlinkSync(curPath);
+                }
+            });
+            fs.rmdirSync(targetPath);
+        }
+    }catch(e)
+    {
+        console.log("remove director fail! path=" + targetPath + " errorMsg:" + e);
+        return false;
+    }
+    return true;
+};
+
+//做生产变以前准备
+createDist();
+function createDist(){
+    //先检查buid目录是否存在
+    var buildPath=RootPath.join(__dirname,"/../build")
+    var ex=fs.existsSync(buildPath);
+    if(!ex){
+        fs.mkdirSync(buildPath);
+    }
+    //先清空目录
+    var rmdir=RootPath.join(__dirname,"/../build/");
+    rmdirsSync(rmdir);
+    //将不能被babel编译的文件放入build目录下 
+    exists(RootPath.join(__dirname,"/../src/assets/"),RootPath.join(__dirname,"/../build/nodeServer/src/assets"),copy);
+    exists(RootPath.join(__dirname,"/../server/template/"),RootPath.join(__dirname,"/../build/nodeServer/server/template"),copy);
+}
+
+
+
+
+
+
+
+
 

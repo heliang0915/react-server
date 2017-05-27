@@ -6,7 +6,7 @@
   "scripts": {
     
     "dev_server":"npm run dev&&npm run server_dev",
-    "pro_server":"npm run mkdir_pro_dir && npm run server_pro && npm run pro",
+    "pro_server":"npm run mkdir_pro_dir && npm run pro && npm run server_pro ",
 
 
     "mkdir_pro_dir":"node ./bin/copy",
