@@ -16,21 +16,24 @@ RouterMap.map((item)=>{
     router.route(item.path).all((req,res)=>{
         match({routes,location:req.originalUrl},(err,redirectLocation,renderPorps)=>{
             if(err){
+                res.status(500).end(`Internal Server Error ${err}`);
             }else if(redirectLocation){
-
+                res.redirect(redirectLocation.pathname + redirectLocation.search);
             }else if(renderPorps){
                 let store=getStoreConfig();
-                let initialState=store.getState();
-                let title=env=="development"?"开发":"生产"
-                let html=renderToString(<Provider store={store}><RouterContext {...renderPorps} /></Provider>);
-                helper.getHTMLFormTemplate("index",{
-                    body:html,
-                    initialState:JSON.stringify(initialState),
-                    title:title
-                },(err,page)=>{
-                    // console.log(err);
-                    res.send(page);
-                })
+                let title=env=="development"?"开发":"生产";
+                // Promise.all([store.dispatch(fetchIndex())]).then(()=>{
+                    let html=renderToString(<Provider store={store}><RouterContext {...renderPorps} /></Provider>);
+                    let initialState=store.getState();
+                    helper.getHTMLFormTemplate("index",{
+                        body:html,
+                        initialState:JSON.stringify(initialState),
+                        title:title
+                    },(err,page)=>{
+                        // console.log(err);
+                        res.send(page);
+                    })
+                // })
             }else{
                 res.send("404");
             }

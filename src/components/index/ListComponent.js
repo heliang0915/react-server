@@ -23,14 +23,12 @@ class ListComponent extends Component{
             </div>
         )
     }
-
     show(){
         let {fetchData}=this.props;
         let list=this.renderList( fetchData.data);
         let loading=this.renderLoading();
-        return fetchData.loaded=="loading"?loading:list
+        return fetchData.loaded=="loading"?loading:list;
     }
-    
     renderList(data){
         let ary=[];
         if(data&&data.length>0){

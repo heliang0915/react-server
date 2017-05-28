@@ -63,6 +63,9 @@ module.exports={
     },
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
+        new OpenBrowserWebpackPlugin({
+            url:"http://localhost:4000/"
+        }),
         // new HtmlWebpackPlugin({
         //     template:path.resolve(__dirname,'src/template/index.ejs'),
         //     title:'开发环境'
@@ -87,9 +90,7 @@ module.exports={
         new ExtractTextPlugin("[name].css?[hash]",{
             allChunks:true
         }),
-        new OpenBrowserWebpackPlugin({
-            url:"http://localhost:3000/"
-        }),
+        
         new webpack.NoErrorsPlugin()
     ]
 }

@@ -1,10 +1,9 @@
 let env=process.env.NODE_ENV||"development";
 let cacheTime=24*60*60*60*1000;
+
 let config={
     development:{
-        port:"",
-        api:""
-
+        port:4000
     },
     production:{
 
