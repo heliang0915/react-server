@@ -11,7 +11,9 @@ class Wrap extends Component{
         return (
             <div>
                 <h2>Index</h2>
-                <Link to="/index">Index</Link>
+                <Link to="/index">Index </Link>
+                <Link to="/upload"> upload</Link>
+                <hr/>
                 {this.props.children}
             </div>
         )

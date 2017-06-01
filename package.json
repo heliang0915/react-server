@@ -4,15 +4,12 @@
   "description": "react-scaffold",
   "main": "index.js",
   "scripts": {
-    
-    "dev_server":"npm run dev&&npm run server_dev",
-    "pro_server":"npm run mkdir_pro_dir && npm run pro && npm run server_pro ",
-
-
-    "mkdir_pro_dir":"node ./bin/copy",
+    "dev_server": "npm run dev&&npm run server_dev",
+    "pro_server": "npm run mkdir_pro_dir && npm run pro && npm run server_pro ",
+    "mkdir_pro_dir": "node ./bin/copy",
     "server_dev": "set NODE_ENV=development&&node ./bin/www",
     "server_pro": "set NODE_ENV=production&&babel ./server -d ./build/nodeServer/server&&babel ./src -d ./build/nodeServer/src &&node ./bin/www",
-    "dev": "webpack -p --progress --profile --config  webpack-dev-config.js",
+    "dev": "webpack -p --progress --profile --config   webpack-dev-config.js",
     "pro": "set NODE_ENV=production&&webpack -p --progress --profile --config webpack-pro-config.js"
   },
   "devDependencies": {
@@ -55,6 +52,7 @@
     "handlebars": "^4.0.10",
     "jade": "~1.11.0",
     "morgan": "~1.8.1",
+    "prop-types": "^15.5.10",
     "serve-favicon": "~2.4.2",
     "webpack-html-plugin": "^0.1.1"
   },

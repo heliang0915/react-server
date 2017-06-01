@@ -42,4 +42,11 @@ RouterMap.map((item)=>{
     })
 })
 
+
+
+router.route('/uploadFile').all((req,res)=>{
+    let json={pic:'//img13.360buyimg.com/n1/g13/M04/11/0C/rBEhUlLTSwkIAAAAAAGhELKHr2sAAH3BwEuo-wAAaEo805.jpg'}
+   res.send(json)
+})
+
 export default router;
