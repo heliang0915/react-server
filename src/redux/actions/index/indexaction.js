@@ -26,7 +26,7 @@ function fetchIndex() {
     return (dispatch)=>{
         dispatch(fetchType());
         //ajax异步
-       return fetch("http://offline-news-api.herokuapp.com/stories").then((res)=>res.json()).then((json)=>{
+       return fetch("/data").then((res)=>res.json()).then((json)=>{
             //成功后
             dispatch(receiveType(json))
         })

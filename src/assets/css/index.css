@@ -6,11 +6,9 @@
     url('../font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
     url('../font/iconfont.svg') format('svg'); /* iOS 4.1- */
 }
-
 h2{
-    color: red;
-    font-size:16px;
-
+    color: black;
+    font-size:36px;
 }
 h2::before{
     content: '';

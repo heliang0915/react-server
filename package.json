@@ -4,16 +4,12 @@
   "description": "react-scaffold",
   "main": "index.js",
   "scripts": {
-    
     "dev_server":"npm run dev&&npm run server_dev",
-    "pro_server":"npm run mkdir_pro_dir && npm run pro && npm run server_pro ",
-
-
-    "mkdir_pro_dir":"node ./bin/copy",
-    "server_dev": "set NODE_ENV=development&&node ./bin/www",
-    "server_pro": "set NODE_ENV=production&&babel ./server -d ./build/nodeServer/server&&babel ./src -d ./build/nodeServer/src &&node ./bin/www",
-    "dev": "webpack -p --progress --profile --config  webpack-dev-config.js",
-    "pro": "set NODE_ENV=production&&webpack -p --progress --profile --config webpack-pro-config.js"
+    "pro_server":"npm run pro && npm run server_pro ",
+    "server_dev":"export NODE_ENV=development&& node ./server/app",
+    "server_pro":"export NODE_ENV=production&& node ./build/server/app",
+    "dev": "webpack -p --progress --profile --watch --config  webpack-dev-config.js",
+    "pro": "export NODE_ENV=production&&webpack -p --progress --profile --config webpack-pro-config.js"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

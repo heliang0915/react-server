@@ -3,17 +3,18 @@
  * @date: 2017/1/13
  */
 let path=require("path");
-require('babel-register');
+
 let webpack=require('webpack');
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
 //开发环境下使用
 let OpenBrowserWebpackPlugin=require("open-browser-webpack-plugin");
+
 var CommonsChunkPlugin=webpack.optimize.CommonsChunkPlugin;
 let reactPath=path.join(__dirname,"./node_modules/react/dist/react.js");
 let reactDomPath=path.join(__dirname,'./node_modules/react-dom/dist/react-dom.js');
+require('babel-register');
 let {env}=require("./server/config");
 console.log("开发环境...");
-
 module.exports={
     entry:{
         app:path.resolve(__dirname,'src/app.js'),
