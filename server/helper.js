@@ -3,13 +3,21 @@
  */
 import  fs from 'fs';
 import  path from 'path';
-import  handlebars from 'handlebars';
-
+import {env} from './config';
+let reg=/{{(\w+)}}/g;
 let helper={
     getHTMLFormTemplate(templateName,data,cb){
-        let filePath=path.join(__dirname,"template/"+templateName+".hbs");
+        let filePath=path.join(__dirname,"/../build/"+env+"/"+templateName+".html");
         fs.readFile(filePath,"utf8",(err,page)=>{
-            let html=handlebars.compile(page.toString())(data);
+           let html="";
+            if(err!=undefined){
+                html=err.message;
+            }else{
+                html=page.replace(reg,function(){
+                    var key=arguments[1];
+                    return data[key];
+                })
+            }
             err!=undefined?cb(err,null):cb(null,html);
         })
     }

@@ -23,8 +23,6 @@ App.use((req,res,next)=>{
 
 App.use("/",index);
 if(env!="development"){
-    console.log("__dirname>>>"+__dirname);
-    console.log("__dirname>>>"+__filename);
     App.use(express.static(path.join(__dirname,"/../build/"+env)));
     App.use(express.static(path.join(__dirname,"/../build/server")));
     console.log("生产状态：静态目录地址==="+path.join(__dirname,"/../build/"+env));

@@ -4,24 +4,16 @@
 
 import React,{Component} from 'react';
 import Upload from '../components/upload/Upload';
-
-
-
 class UploadView extends Component{
-
     state={
         pic:''
     }
-
     changePic(json){
         json=JSON.parse(json);
         this.setState({
             pic:json.pic
         });
     }
-
-
-
     render(){
         return(
             <div>

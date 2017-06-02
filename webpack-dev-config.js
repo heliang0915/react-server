@@ -8,12 +8,13 @@ let webpack=require('webpack');
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
 //开发环境下使用
 let OpenBrowserWebpackPlugin=require("open-browser-webpack-plugin");
-
+let HtmlWebpackPlugin=require("html-webpack-plugin");
 var CommonsChunkPlugin=webpack.optimize.CommonsChunkPlugin;
 let reactPath=path.join(__dirname,"./node_modules/react/dist/react.js");
 let reactDomPath=path.join(__dirname,'./node_modules/react-dom/dist/react-dom.js');
 require('babel-register');
-let {env}=require("./server/config");
+let {env,conf,templateName}=require("./server/config");
+let port=conf.port||3000;
 console.log("开发环境...");
 module.exports={
     entry:{
@@ -23,12 +24,8 @@ module.exports={
     output:{
         path:path.resolve(__dirname,'build/'+env),
         publicPath: '/',
-        filename:'[name].js'
+        filename:'[name].js?[hash]'
     },
-    // devServer:{
-    //   contentBase:"build",
-    //   stats:{colors:true}
-    // },
     devtool:"eval-source-map",
     resolve:{
        extensions:['','.js','.css','.jsx']
@@ -65,12 +62,13 @@ module.exports={
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserWebpackPlugin({
-            url:"http://localhost:4000/"
+            url:"http://localhost:"+port+"/"
         }),
-        // new HtmlWebpackPlugin({
-        //     template:path.resolve(__dirname,'src/template/index.ejs'),
-        //     title:'开发环境'
-        // }),
+        new HtmlWebpackPlugin({
+            template:path.resolve(__dirname,'template/index.ejs'),
+            filename:templateName+'.html',
+            title:'开发环境'
+        }),
         //合并第三方代码
         new CommonsChunkPlugin({
             name:"libs",

@@ -6,7 +6,6 @@
 import React,{Component} from 'react';
 import {Router,browserHistory} from 'react-router';
 import routes from './routes';
-
 class RootRouter extends  Component{
     render(){
         return (

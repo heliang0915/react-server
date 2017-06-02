@@ -6,11 +6,10 @@ let path=require("path");
 let fs=require("fs");
 require('babel-register');
 let webpack=require('webpack');
-let {env}=require("./server/config");
+let {env,templateName}=require("./server/config");
 let HtmlWebpackPlugin=require("html-webpack-plugin");
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
 var CommonsChunkPlugin=webpack.optimize.CommonsChunkPlugin;
-
 let reactPath=path.join(__dirname,"./node_modules/react/dist/react.js");
 let reactDomPath=path.join(__dirname,'./node_modules/react-dom/dist/react-dom.js');
 console.log("生产环境...");
@@ -60,10 +59,11 @@ let clientConfig={
         noParse:[reactPath,reactDomPath]
     },
     plugins:[
-        // new HtmlWebpackPlugin({
-        //     template:path.resolve(__dirname,'src/template/index.ejs'),
-        //     title:'生产环境'
-        // }),
+        new HtmlWebpackPlugin({
+            template:path.resolve(__dirname,'template/index.ejs'),
+            filename:templateName+'.html',
+            title:'生产环境'
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production')

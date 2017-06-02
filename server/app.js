@@ -32,7 +32,7 @@ if(env=="development"){
 let app =require("./server").default;
 let {conf:config} =require("./config");
 let http=require('http');
-let port=3000;
+let port=config.port||3000;
 app.set("port",port);
 let server=http.createServer(app);
 

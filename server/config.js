@@ -1,6 +1,7 @@
 let env=process.env.NODE_ENV||"development";
-console.log(process.env.NODE_ENV);
 let cacheTime=24*60*60*60*1000;
+//全局模板文件
+let templateName="template";
 
 let config={
     development:{
@@ -12,4 +13,4 @@ let config={
 };
 
 let conf= config[env];
-export {conf,env,cacheTime};
+export {conf,env,cacheTime,templateName};
