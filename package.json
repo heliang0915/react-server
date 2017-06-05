@@ -9,7 +9,9 @@
     "server_dev": "export NODE_ENV=development&& node ./server/app",
     "server_pro": "export NODE_ENV=production&& node ./build/server/app",
     "dev": "webpack -p --progress --profile --watch --config  webpack-dev-config.js",
-    "pro": "export NODE_ENV=production&&webpack -p --progress --profile --config webpack-pro-config.js"
+    "pro": "export NODE_ENV=production&&webpack -p --progress --profile --config webpack-pro-config.js",
+    "pm2_dev":"pm2 start pm2_dev.json",
+    "pm2_pro":"pm2 start pm2_pro.json"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

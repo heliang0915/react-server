@@ -1,0 +1,20 @@
+{
+  "name"             : "react-server",
+  "script"           : "build/server/app.js",
+  "log_date_format"  : "YYYY-MM-DD HH:mm:ss Z",
+  "error_file"       : "./logs/error.log",
+  "out_file"         : "./logs/access.log",
+  "pid_file"         : "./pids/react-server.pid",
+  "instances"        : 6,
+  "max_memory_restart": "100M", // 1 megabytes, e.g.: "2G", "10M", "100K", 1024 the default unit is byte.
+  "watch"            : false,
+  "ignore_watch"      : ["[\\/\\\\]\\./", "node_modules"],
+  "merge_logs"       : true,
+  "exec_interpreter" : "node",
+  "exec_mode"        : "cluster",
+  "autorestart"      : false, // enable/disable automatic restart when an app crashes or exits
+  "vizion"           : false, // enable/disable vizion features (versioning control)
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
