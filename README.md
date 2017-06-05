@@ -21,14 +21,14 @@
  ├── server 项目服务器端地址 
  ├── template 模板存放目录
  ├── build webapck打开后文件存放位置
- │     ├── development 本地开发目录
+ │    ├── development 本地开发目录
  │	   ├── server 压缩后服务器目录
- │     └── production 线上文件
+ │    └── production 线上文件
  ├── pm2 pm2启动文件相关配置信息
  │   ├── logs  本地日志目录
  │   ├── pids  启动集群后的线程pid
- │	 ├──pm2_dev.json  启动开发环境下集群
- │   ├──pm2_pro.json  启动生产环境下集群
+ │	  ├──pm2_dev.json  启动开发环境下集群
+ │   └──pm2_pro.json  启动生产环境下集群
  ├── src react同构代码目录
  │   ├── assets 资源目录
  │   ├── components react公用组件
@@ -36,7 +36,7 @@
  │   ├── container  将组件包装一层的容器层
  │   ├── views 后台各个页面
  │   ├── redux redux相关目录
- │   ├── routers react页面路由，同时提供给后端express
+ │   └── routers react页面路由，同时提供给后端express
  └── uploads 上传图片临时存放目录、空目录
  ```
 
