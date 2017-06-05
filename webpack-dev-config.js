@@ -24,6 +24,8 @@ module.exports={
     output:{
         path:path.resolve(__dirname,'build/'+env),
         publicPath: '/',
+        // 添加 chunkFilename
+        chunkFilename: '[name].[chunkhash:5].chunk.js',
         filename:'[name].js?[hash]'
     },
     devtool:"eval-source-map",
@@ -69,22 +71,22 @@ module.exports={
             filename:templateName+'.html',
             title:'开发环境'
         }),
-        //合并第三方代码
-        new CommonsChunkPlugin({
-            name:"libs",
-            filename:"libs.js?[hash]",
-            minChunks:Infinity
-        }),
-        //压缩时去掉警告
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            output: {
-                // remove all comments(注释)
-                comments: false
-            }
-        }),
+        // //合并第三方代码
+        // new CommonsChunkPlugin({
+        //     name:"libs",
+        //     filename:"libs.js?[hash]",
+        //     minChunks:Infinity
+        // }),
+        // //压缩时去掉警告
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     },
+        //     output: {
+        //         // remove all comments(注释)
+        //         comments: false
+        //     }
+        // }),
         //合并css
         new ExtractTextPlugin("[name].css?[hash]",{
             allChunks:true

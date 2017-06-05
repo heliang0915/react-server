@@ -5,6 +5,7 @@ import  cookieParser from 'cookie-parser';
 import  bodyParser from 'body-parser';
 import {env,cacheTime} from './config';
 import index from './router/index';
+import history from 'connect-history-api-fallback';
 
 let App=express();
 App.use(debug('dev'));
@@ -20,6 +21,14 @@ App.use((req,res,next)=>{
     res.header("Expires",date.toUTCString());
     next();
 })
+
+// var rewrites = {
+//     rewrites: [{
+//         from: '/*', // 正则或者字符串
+//         to: '/', // 字符串或者函数
+//     }]
+// }
+// App.use(history());
 
 App.use("/",index);
 if(env!="development"){

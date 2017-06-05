@@ -7,12 +7,9 @@ import getStoreConfig from '../../src/redux/store/store'
 import routes from '../../src/routers/routes';
 import helper from '../helper';
 import {templateName} from '../config';
-import RouterMap from '../../src/RouterMap';
-
+import RouterMap from '../../src/routermaps';
 let router=express.Router();
-
 RouterMap.map((item)=>{
-   
     router.route(item.path).all((req,res)=>{
         match({routes,location:req.originalUrl},(err,redirectLocation,renderPorps)=>{
             if(err){

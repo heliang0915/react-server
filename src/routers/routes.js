@@ -4,12 +4,24 @@
 import  React from 'react';
 import  {Route} from 'react-router';
 import Wrap from '../views/wrap';
-import IndexView from '../views/indexview';
-import UploadView from '../views/uploadview';
+import RouterMap from '../routermaps';
+import syncRoutes from './modules';
+
+//加载动态路由
+let getMethod=(method)=>syncRoutes[method];
+//过滤路由映射对象
+let mapRouter=RouterMap.filter((item)=>{
+    return item.isSys;
+})
+//
+let sysRouterList=mapRouter.map((item,index)=>{
+    let method=getMethod(item.componentName);
+    return <Route  key={index} path={item.path} getComponent={method} />
+})
+
 const routes=(
     <Route path="/" component={Wrap}>
-        <Route path="/index" component={IndexView}/>
-        <Route path="/upload" component={UploadView}/>
+        {sysRouterList}
     </Route>
 )
 export default  routes;
