@@ -22,13 +22,13 @@
  ├── template 模板存放目录
  ├── build webapck打开后文件存放位置
  │     ├── development 本地开发目录
- │	    ├── server 压缩后服务器目录
+ │	   ├── server 压缩后服务器目录
  │     └── production 线上文件
  ├── pm2 pm2启动文件相关配置信息
  │   ├── logs  本地日志目录
  │   ├── pids  启动集群后的线程pid
- │	   ├──pm2_dev.json  启动开发环境下集群
- │    ├──pm2_pro.json  启动生产环境下集群
+ │	 ├──pm2_dev.json  启动开发环境下集群
+ │   ├──pm2_pro.json  启动生产环境下集群
  ├── src react同构代码目录
  │   ├── assets 资源目录
  │   ├── components react公用组件
