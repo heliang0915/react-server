@@ -2,9 +2,9 @@
   "name"             : "react-server",
   "script"           : "server/app.js",
   "log_date_format"  : "YYYY-MM-DD HH:mm:ss Z",
-  "error_file"       : "./logs/error.log",
-  "out_file"         : "./logs/access.log",
-  "pid_file"         : "./pids/react-server.pid",
+  "error_file"       : "pm2/logs/error.log",
+  "out_file"         : "pm2/logs/access.log",
+  "pid_file"         : "pm2/pids/react-server.pid",
   "instances"        : 6,
   "max_memory_restart": "100M", // 1 megabytes, e.g.: "2G", "10M", "100K", 1024 the default unit is byte.
   "watch"            : false,
