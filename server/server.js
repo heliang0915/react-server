@@ -22,14 +22,6 @@ App.use((req,res,next)=>{
     next();
 })
 
-// var rewrites = {
-//     rewrites: [{
-//         from: '/*', // 正则或者字符串
-//         to: '/', // 字符串或者函数
-//     }]
-// }
-// App.use(history());
-
 App.use("/",index);
 if(env!="development"){
     App.use(express.static(path.join(__dirname,"/../build/"+env)));

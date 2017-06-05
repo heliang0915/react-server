@@ -8,10 +8,12 @@
     "pro_server": "npm run pro && npm run server_pro ",
     "server_dev": "export NODE_ENV=development&& node ./server/app",
     "server_pro": "export NODE_ENV=production&& node ./build/server/app",
-    "dev": "webpack -p --progress --profile --watch --config  webpack-dev-config.js",
+    "dev": "webpack -p --progress --profile --watch --config  webpack-dev-config.js" ,
     "pro": "export NODE_ENV=production&&webpack -p --progress --profile --config webpack-pro-config.js",
-    "pm2_dev":"pm2 start pm2/pm2_dev.json",
-    "pm2_pro":"pm2 start pm2/pm2_pro.json"
+    "pm2_dev":"pm2 start pm2/pm2_dev.json ",
+    "pm2_pro":"pm2 start pm2/pm2_pro.json",
+    "pm2-web":"pm2-web --config pm2/pm2_web/pm2-web-config.json",
+    "pro_start_all":"npm run pro && npm run pm2_pro &&npm run pm2-web"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

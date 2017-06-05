@@ -110,8 +110,7 @@ let serverConfig = {
     },
     output: {
         path: path.resolve(__dirname, 'build/server'),
-        filename: '[name].js',
-        chunkFilename: 'chunk.[name].js?[hash]'
+        filename: '[name].js'
     },
     target: 'node',
     node: {
@@ -148,9 +147,6 @@ let serverConfig = {
         new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(env)})
     ]
 }
-
-
-
 module.exports=[clientConfig,serverConfig]
 
 

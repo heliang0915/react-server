@@ -24,8 +24,6 @@ module.exports={
     output:{
         path:path.resolve(__dirname,'build/'+env),
         publicPath: '/',
-        // 添加 chunkFilename
-        chunkFilename: '[name].[chunkhash:5].chunk.js',
         filename:'[name].js?[hash]'
     },
     devtool:"eval-source-map",
