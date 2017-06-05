@@ -1,5 +1,5 @@
 .idea
 node_modules
 build
-pm2/logs
-pm2/pids
+pm2/logs/*
+pm2/pids/*
