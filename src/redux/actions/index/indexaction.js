@@ -5,6 +5,7 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 import {FETCH_INDEX,RECEIVE_INDEX} from '../actionTypes';
+import {conf} from '../../../../server/config';
 
 
 let fetchType=()=>{
@@ -26,7 +27,8 @@ function fetchIndex() {
     return (dispatch)=>{
         dispatch(fetchType());
         //ajax异步
-       return fetch("/data").then((res)=>res.json()).then((json)=>{
+        let port=conf.port;
+       return fetch(`http://localhost:${port}/data`).then((res)=>res.json()).then((json)=>{
             //成功后
             dispatch(receiveType(json))
         })
