@@ -8,6 +8,9 @@ import routes from '../../src/routers/routes';
 import helper from '../helper';
 import {templateName} from '../config';
 import RouterMap from '../../src/routermaps';
+import {fetchIndex} from '../../src/redux/actions/index/indexaction';
+
+
 let router=express.Router();
 RouterMap.map((item)=>{
     router.route(item.path).all((req,res)=>{
@@ -19,8 +22,10 @@ RouterMap.map((item)=>{
             }else if(renderPorps){
                 let store=getStoreConfig();
                 // Promise.all([store.dispatch(fetchIndex())]).then(()=>{
+
                     let html=renderToString(<Provider store={store}><RouterContext {...renderPorps} /></Provider>);
                     let initialState=store.getState();
+                    console.log(html);
                     helper.getHTMLFormTemplate(templateName,{
                         body:html,
                         initialState:JSON.stringify(initialState)

@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import RootReducer from '../reducers/rootreducer';
 
 let getStoreConfig=(initialState)=>{
-    let store=applyMiddleware(thunk)(createStore)(RootReducer);
+    let store=applyMiddleware(thunk)(createStore)(RootReducer,initialState);
     return store;
 }
 export  default getStoreConfig;

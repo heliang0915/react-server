@@ -13,6 +13,7 @@ class Wrap extends Component{
                 <h2>Index</h2>
                 <Link to="/index">Index </Link>
                 <Link to="/upload"> upload</Link>
+                <Link to="/model"> model</Link>
                 <hr/>
                 {this.props.children}
             </div>

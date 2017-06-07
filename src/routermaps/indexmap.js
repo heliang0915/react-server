@@ -11,6 +11,11 @@ let IndexRouterMap=[{
     name:"index",
     componentName:"IndexView",
     isSys:true
+},{
+    path:"/model",
+    name:"model",
+    componentName:"ModelContainer",
+    isSys:true
 }]
 
 export default IndexRouterMap;
