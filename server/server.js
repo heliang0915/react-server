@@ -4,6 +4,7 @@ import debug from 'morgan';
 import  cookieParser from 'cookie-parser';
 import  bodyParser from 'body-parser';
 import {env,cacheTime} from './config';
+import api from './router/api';
 import index from './router/index';
 import history from 'connect-history-api-fallback';
 
@@ -22,7 +23,9 @@ App.use((req,res,next)=>{
     next();
 })
 
+App.use("/api/",api)
 App.use("/",index);
+
 if(env!="development"){
     App.use(express.static(path.join(__dirname,"/../build/"+env)));
     App.use(express.static(path.join(__dirname,"/../build/server")));

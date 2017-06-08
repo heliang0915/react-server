@@ -5,10 +5,12 @@ let templateName="template";
 
 let config={
     development:{
-        port:4000
+        port:4000,
+        api:'http://localhost:4000/api'
     },
     production:{
-        port:5000
+        port:5000,
+        api:'http://localhost:5000/api'
     }
 };
 

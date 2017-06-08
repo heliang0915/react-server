@@ -33,7 +33,12 @@ class ListComponent extends Component{
         let ary=[];
         if(data&&data.length>0){
             data.forEach((item,index)=>{
-                ary.push(<p key={index}>{item.author}</p>);
+                ary.push(
+                    <div key={index}>
+                        <span>{item.login}</span>
+                        <img  style={{height:100,width:100}} src={item.avatar_url} />
+                    </div>
+                    );
             })
         }
         return ary;

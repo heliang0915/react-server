@@ -7,7 +7,6 @@ require('isomorphic-fetch');
 import {FETCH_INDEX,RECEIVE_INDEX} from '../actionTypes';
 import {conf} from '../../../../server/config';
 
-
 let fetchType=()=>{
     return {
         type:FETCH_INDEX,
@@ -27,14 +26,13 @@ function fetchIndex() {
     return (dispatch)=>{
         dispatch(fetchType());
         //ajax异步
-        let port=conf.port;
-       return fetch(`http://localhost:${port}/data`).then((res)=>res.json()).then((json)=>{
+
+       return fetch(`${conf.api}/users`).then((res)=>res.json()).then((json)=>{
             //成功后
-            dispatch(receiveType(json))
+            dispatch(receiveType(json.data))
         })
     }
 }
-
 export {fetchIndex}
 
 
