@@ -1,5 +1,5 @@
 /*
-* react渲染服务器222
+* react渲染服务器
 * */
 import express from 'express';
 import  path from 'path';
@@ -9,7 +9,6 @@ import  bodyParser from 'body-parser';
 import {env,cacheTime} from './config';
 import api from './router/api';
 import index from './router/index';
-import history from 'connect-history-api-fallback';
 
 let App=express();
 App.use(debug('dev'));
