@@ -1,3 +1,6 @@
+/*
+* react渲染服务器
+* */
 import express from 'express';
 import  path from 'path';
 import debug from 'morgan';

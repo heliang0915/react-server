@@ -1,3 +1,6 @@
+/*
+* 全局配置文件
+* */
 let env=process.env.NODE_ENV||"development";
 let cacheTime=24*60*60*60*1000;
 //全局模板文件
