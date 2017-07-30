@@ -4,6 +4,7 @@
   "description": "react-scaffold",
   "main": "index.js",
   "scripts": {
+    "dll": "webpack -p  --progress --color --config webpack.dll.config.js",
     "dev_server": "npm run dev&&npm run server_dev",
     "pro_server": "npm run pro && npm run server_pro ",
     "server_dev": "export NODE_ENV=development&& supervisor -w src/,server/,template/ ./server/app",

@@ -18,8 +18,7 @@ let port=conf.port||3000;
 console.log("开发环境...");
 module.exports={
     entry:{
-        app:path.resolve(__dirname,'src/app.js'),
-        libs:['react','react-dom','react-router','react-redux','isomorphic-fetch']
+        app:path.resolve(__dirname,'src/app.js')
     },
     output:{
         path:path.resolve(__dirname,'build/'+env),
@@ -69,12 +68,16 @@ module.exports={
             filename:templateName+'.html',
             title:'开发环境'
         }),
-        // //合并第三方代码
+        //合并第三方代码
         // new CommonsChunkPlugin({
-        //     name:"libs",
-        //     filename:"libs.js?[hash]",
+        //     name:"commons",
+        //     filename:"commons.js?[hash]",
         //     minChunks:Infinity
         // }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./vendor-manifest.json')
+        }),
         // //压缩时去掉警告
         // new webpack.optimize.UglifyJsPlugin({
         //     compress: {
